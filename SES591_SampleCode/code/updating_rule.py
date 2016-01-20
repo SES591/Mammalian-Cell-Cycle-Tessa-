@@ -43,6 +43,7 @@ def sigmoid_updating(net, prevState):
             currState[v] = prevState[v]
 
     return currState
+    
 ################# end: sigmoid_updating ########################
 
 def main():

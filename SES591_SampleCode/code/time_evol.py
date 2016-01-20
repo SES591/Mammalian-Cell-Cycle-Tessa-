@@ -7,7 +7,7 @@ import os
 import sys
 import numpy as np
 import networkx as nx
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 import input_net as inet
 import updating_rule as ur
@@ -137,8 +137,8 @@ def main():
 
 
     decStateTransMap = net_state_transition(net, nodes_list)
-    #nx.draw(decStateTransMap)
-    #plt.show()
+    nx.draw(decStateTransMap)
+    plt.show()
     
 
     attractors = find_attractor(decStateTransMap)

@@ -13,6 +13,7 @@ import networkx as nx
 
 ################# BEGIN: read_network_from_file(EDGE_FILE, NODE_FILE) ########################
 def read_network_from_file(EDGE_FILE, NODE_FILE):
+    """Get edge list, thresholds and nodes from file"""
 
     '''
      Arguments:
@@ -37,6 +38,7 @@ def read_network_from_file(EDGE_FILE, NODE_FILE):
 
 ################# BEGIN: build_nodes_list(NODE_FILE) ########################
 def build_nodes_list(NODE_FILE):
+    """Reads in nodes list from NODE_FILE and returns and ordered list of nodes"""
     
     '''
         Arguments:
@@ -51,7 +53,9 @@ def build_nodes_list(NODE_FILE):
             continue
         nodes_list.append(items[0])
 
-    return nodes_list
+    return nodes_list  #returns ordered list of node names as they appear in NODE_FILE
+
+
 ################# END: build_nodes_list(NODE_FILE) ########################
 
 def main():

@@ -17,6 +17,7 @@ import input_net as inet
 
 ################# begin: sigmoid_updating ######################
 def sigmoid_updating(net, prevState):
+    """Update according to fixed thresholds for each node"""
 
     '''
         Arguments:
@@ -32,6 +33,7 @@ def sigmoid_updating(net, prevState):
         #### compute weighted sum for node v over its neighbors u ####
         eSum = 0
         for u in net.predecessors_iter(v):
+            #iterate over input nodes u to node v
             w_uv = 1.0*net[u][v]['weight']
             eSum += w_uv * prevState[u]
         #### determine the current state for v as a function of eSum and threshold of v ####

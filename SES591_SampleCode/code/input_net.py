@@ -13,7 +13,6 @@ import networkx as nx
 
 ################# BEGIN: read_network_from_file(EDGE_FILE, NODE_FILE) ########################
 def read_network_from_file(EDGE_FILE, NODE_FILE):
-    """Get edge list, thresholds and nodes from file"""
 
     '''
      Arguments:
@@ -38,7 +37,6 @@ def read_network_from_file(EDGE_FILE, NODE_FILE):
 
 ################# BEGIN: build_nodes_list(NODE_FILE) ########################
 def build_nodes_list(NODE_FILE):
-    """Reads in nodes list from NODE_FILE and returns and ordered list of nodes"""
     
     '''
         Arguments:
@@ -53,10 +51,29 @@ def build_nodes_list(NODE_FILE):
             continue
         nodes_list.append(items[0])
 
-    return nodes_list  #returns ordered list of node names as they appear in NODE_FILE
-
-
+    return nodes_list
 ################# END: build_nodes_list(NODE_FILE) ########################
+
+################# BEGIN: read_init_from_file(BIO_INIT_FILE) ########################
+def read_init_from_file(BIO_INIT_FILE):
+    
+    '''
+        Arguments:
+        1. BIO_INIT_FILE => node  initial-state-for-bio-seq
+        Return:
+        1. bio_initStates => dict { node: inital-binary-value, ... }
+        '''
+    bio_initStates = {}
+    for line in open(BIO_INIT_FILE, 'r').readlines():
+        items = [x.strip() for x in line.rstrip().split('\t')]
+        if line[0] == '#' or line=='':
+            continue
+        bio_initStates[items[0]] = int(items[1])
+    
+    return bio_initStates
+################# END: read_init_from_file(BIO_INIT_FILE) ########################
+
+
 
 def main():
     print "input_net module is the main code."

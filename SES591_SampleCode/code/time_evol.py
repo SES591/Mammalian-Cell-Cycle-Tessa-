@@ -58,7 +58,7 @@ def biological_sequence(net, nodes_list, bio_initStates, fileName, Nbr_States=2)
         OUTPUT_FILE.write('\t%s'%(u))
     OUTPUT_FILE.write('\n')
 
-    for i in range(0, len(bioSeq)):
+    for i in range(len(bioSeq)):
         OUTPUT_FILE.write('%d'%i)
         for u in nodes_list:
             OUTPUT_FILE.write('\t%d'%(bioSeq[i][u]))
@@ -68,7 +68,7 @@ def biological_sequence(net, nodes_list, bio_initStates, fileName, Nbr_States=2)
 
 
 ################# BEGIN: ensemble_time_series(net, nodes_list, Nbr_States=2, MAX_TimeStep=20, Transition_Step=0) ########################
-def ensemble_time_series(net, nodes_list, Nbr_States=2, MAX_TimeStep=20):
+def time_series(net, nodes_list, Nbr_Initial_States, Nbr_States, MAX_TimeStep=20):
     
     '''
         Arguments:
@@ -80,18 +80,18 @@ def ensemble_time_series(net, nodes_list, Nbr_States=2, MAX_TimeStep=20):
         1. timeSeriesData
         '''
     
-    Nbr_Nodes = len(net.nodes())
-    Nbr_All_Initial_States = np.power(Nbr_States, Nbr_Nodes)
+    #Nbr_Nodes = len(net.nodes())
+    #Nbr_All_Initial_States = np.power(Nbr_States, Nbr_Nodes)
     
     timeSeriesData = {}
     for n in net.nodes():
         timeSeriesData[n] = {}
-        for initState in range(0, Nbr_All_Initial_States):
+        for initState in range(Nbr_Initial_States):
             timeSeriesData[n][initState] = []
     
-    for initDecState in range(0, Nbr_All_Initial_States):
+    for initDecState in range(Nbr_Initial_States):
         currBiState = decimal_to_binary(nodes_list, initDecState, Nbr_States)
-        for step in range(0, MAX_TimeStep):
+        for step in range(MAX_TimeStep):
             prevBiState = currBiState.copy()
             for n in nodes_list:
                 timeSeriesData[n][initDecState].append(prevBiState[n])
@@ -116,7 +116,7 @@ def net_state_transition(net, nodes_list, Nbr_States=2):
     Nbr_All_Initial_States = np.power(Nbr_States, Nbr_Nodes)
     
     decStateTransMap = nx.DiGraph()
-    for prevDecState in range(0, Nbr_All_Initial_States):
+    for prevDecState in range(Nbr_All_Initial_States):
         prevBiState = decimal_to_binary(nodes_list, prevDecState, Nbr_States)
         currBiState = ur.sigmoid_updating(net, prevBiState)
         currDecState = binary_to_decimal(nodes_list, currBiState, Nbr_States)

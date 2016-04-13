@@ -30,7 +30,7 @@ def read_network_from_file(EDGE_FILE, NODE_FILE):
         items = [x.strip() for x in line.rstrip().split('\t')]
         if line[0] == '#' or line=='':
             continue
-        net.add_node(items[0], state=float(items[1]))
+        net.add_node(items[0], threshold=float(items[1]))
 
     return net
 ################# END: read_network_from_file(EDGE_FILE, NODE_FILE) ########################
@@ -53,6 +53,27 @@ def build_nodes_list(NODE_FILE):
 
     return nodes_list
 ################# END: build_nodes_list(NODE_FILE) ########################
+
+################# BEGIN: read_init_from_file(BIO_INIT_FILE) ########################
+def read_init_from_file(BIO_INIT_FILE):
+    
+    '''
+        Arguments:
+        1. BIO_INIT_FILE => node  initial-state-for-bio-seq
+        Return:
+        1. bio_initStates => dict { node: inital-binary-value, ... }
+        '''
+    bio_initStates = {}
+    for line in open(BIO_INIT_FILE, 'r').readlines():
+        items = [x.strip() for x in line.rstrip().split('\t')]
+        if line[0] == '#' or line=='':
+            continue
+        bio_initStates[items[0]] = int(items[1])
+    
+    return bio_initStates
+################# END: read_init_from_file(BIO_INIT_FILE) ########################
+
+
 
 def main():
     print "input_net module is the main code."

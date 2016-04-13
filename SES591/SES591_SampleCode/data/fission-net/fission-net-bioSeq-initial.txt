@@ -1,0 +1,11 @@
+#Node	#Bio-initial-binary-state
+CycD	1
+Rb	0
+E2F	0
+CycE	0
+CycA	0
+P27	0
+Cdc20	0
+UbcH10	0
+Cdh1	0
+CycB	0

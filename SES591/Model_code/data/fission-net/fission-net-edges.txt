@@ -1,0 +1,44 @@
+#CycD
+CycD	CycD	1
+CycD	Rb	1
+CycD	P27	1
+#Rb
+Rb	CycE	1
+Rb	E2F	1
+Rb	CycA	1
+#E2F
+E2F	CycE	1
+E2F	CycA	1
+#CycE
+CycE	CycE	1
+CycE	Rb	1
+CycE	P27	1
+#P27
+P27	P27	1
+P27	E2F	1
+P27	Cdh1	1
+P27	Rb	1
+#CycA
+CycA	CycA	1
+CycA	E2F	1
+CycA	Cdh1	1
+CycA	P27	1
+#Cdc20
+Cdc20	CycA	1
+Cdc20	Cdh1	1
+Cdc20	UbcH10	1
+Cdc20	CycB	1
+#UbcH10
+UbcH10	UbcH10	1
+UbcH10	CycA	1
+#Cdh1
+Cdh1	Cdc20	1
+Cdh1	CycB	1
+Cdh1	CycA	1
+Cdh1	UbcH10	1
+#CycB
+CycB	Cdh1	1
+CycB	Rb	1
+CycB	P27	1
+CycB	E2F	1
+CycB	Cdc20	1
